@@ -122,7 +122,9 @@ local_cflags += '-DICU_DATA_DIR="/usr/icu"'
 local_cflags += -D_REENTRANT -DU_COMMON_IMPLEMENTATION -O3 -fvisibility=hidden
 local_ldlibs := -lpthread -lm
 
-
+ifeq ($(NEEDS_UCNV_EX_44_WRAPPER),true)
+	local_cflags += -DNEEDS_UCNV_EX_44_WRAPPER
+endif
 #
 # Build for the target (device).
 #
